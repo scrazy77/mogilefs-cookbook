@@ -65,7 +65,7 @@ def load_current_resource
   @device = Chef::Resource::MogilefsDevice.new(new_resource.name)
   @device.trackers(new_resource.trackers)
   exists = connection.get_devices.any? do |device|
-    new_resource.devid.to_s == device['devid']
+    new_resource.devid.to_s == device['devid'].to_s
   end
   @device.exists(exists)
 end
