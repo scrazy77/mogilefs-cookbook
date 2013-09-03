@@ -37,7 +37,7 @@ define :mogilefs_tracker, :database => { :host => nil, :port => nil, :timeout =>
   runit_options = params[:runit_options]
   runit_options[:cookbook] ||= params[:cookbook]
   runit_options[:template_name] ||= 'mogilefsd'
-  runit_options[:run_restart] ||= true
+  #runit_options[:run_restart] ||= true
   runit_options[:options] = Hash.new unless runit_options.has_key?(:options)
   runit_options[:options].merge!(:conf_path => "#{node[:mogilefs][:dir]}/#{params[:service_name]}.conf")
   
@@ -63,7 +63,7 @@ define :mogilefs_tracker, :database => { :host => nil, :port => nil, :timeout =>
     cookbook runit_options[:cookbook]
     template_name runit_options[:template_name]
     options runit_options[:options]
-    run_restart runit_options[:run_restart]
+    #run_restart runit_options[:run_restart]
     directory runit_options[:directory] if runit_options.has_key?(:directory)
     only_if runit_options[:only_if] if runit_options.has_key?(:only_if)
     control runit_options[:control] if runit_options.has_key?(:control)
